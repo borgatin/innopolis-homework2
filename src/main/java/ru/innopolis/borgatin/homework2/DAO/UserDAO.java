@@ -21,7 +21,7 @@ public class UserDAO extends AbstractDAO<User, Integer>
 
 
 
-    public UserDAO() throws SQLException, NamingException {
+    public UserDAO() throws SQLException {
         super();
     }
 

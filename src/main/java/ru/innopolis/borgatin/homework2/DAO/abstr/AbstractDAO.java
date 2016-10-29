@@ -15,20 +15,30 @@ import java.util.List;
 public abstract class AbstractDAO<E, K> {
     private Connection connection;
 
-    public AbstractDAO() throws SQLException, NamingException {
-        InitialContext initialContext = new InitialContext();
-        DataSource ds = (DataSource) initialContext.lookup("java:comp/env/jdbc/dbconnect");
-        connection = ds.getConnection();
+    public AbstractDAO() throws SQLException {
+        InitialContext initialContext = null;
+        try {
+            initialContext = new InitialContext();
+
+            DataSource ds = (DataSource) initialContext.lookup("java:comp/env/jdbc/app");
+            connection = ds.getConnection();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
     }
 
 
     public abstract List<E> getAll();
+
     public abstract E getEntityById(K id);
+
     public abstract E update(E entity);
+
     public abstract boolean delete(K id);
+
     public abstract boolean create(E entity);
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         return connection;
     }
 

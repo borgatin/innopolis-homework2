@@ -28,7 +28,7 @@
 </form>
 
 <br/>
-<a href="auth/registration.jsp">Регистрация</a>
+<a href="registration.jsp">Регистрация</a>
     </div>
 </div>
 </body>
