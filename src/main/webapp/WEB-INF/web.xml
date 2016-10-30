@@ -48,6 +48,26 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>ru.innopolis.borgatin.homework2.servlets.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>main</servlet-name>
+        <servlet-class>ru.innopolis.borgatin.homework2.servlets.LoginBeforeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+
+
 
 
 </web-app>

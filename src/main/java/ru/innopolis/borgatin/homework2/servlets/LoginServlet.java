@@ -33,12 +33,14 @@ public class LoginServlet extends HttpServlet {
             if (passwordFromDB!=null&&passwordFromDB.equals(password)){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("userID", user.getId());
-                view = req.getRequestDispatcher("personalPage.jsp");
+                session.setAttribute("user", user);
+//                view = req.getRequestDispatcher("personalPage.jsp");
+                resp.sendRedirect("personalPage.jsp");
             } else {
                 req.setAttribute("errorMsg", "Неверное имя пользователя или пароль");
                 view = req.getRequestDispatcher("index.jsp");
+                view.forward(req, resp);
             }
-            view.forward(req, resp);
 
 
         } catch (SQLException e) {

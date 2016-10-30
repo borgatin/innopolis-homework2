@@ -27,9 +27,10 @@
         </div>
         <br/>
         <p style="color:red">${errorMsg}</p>
+        <input type="submit" value="Зарегистрироваться">
+
     </div>
 
-    <input type="submit" value="Зарегистрироваться">
 </form>
 
     </div>
