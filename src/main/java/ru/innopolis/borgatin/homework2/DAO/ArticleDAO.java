@@ -38,6 +38,6 @@ public class ArticleDAO extends AbstractDAO<Article, Integer> {
 
     @Override
     public boolean create(Article entity) {
-        return false;
+        return true;
     }
 }

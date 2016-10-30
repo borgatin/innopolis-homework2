@@ -10,6 +10,7 @@
     <div class="block">
 
 <form action="${pageContext.request.contextPath}/reg" method="POST">
+    <p><a href="index.jsp">Войти</a></p>
     <p>Регистрация:</p>
     <div class="main">
         <div class="field">
@@ -24,6 +25,8 @@
             <label> <b>Пароль:</b></label>
             <input type="password" size="20" name="password">
         </div>
+        <br/>
+        <p style="color:red">${errorMsg}</p>
     </div>
 
     <input type="submit" value="Зарегистрироваться">

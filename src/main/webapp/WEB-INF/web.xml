@@ -28,4 +28,26 @@
         <servlet-name>auth</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updateProfile</servlet-name>
+        <servlet-class>ru.innopolis.borgatin.homework2.servlets.ProfileUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateProfile</servlet-name>
+        <url-pattern>/updateProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>editProfileView</servlet-name>
+        <servlet-class>ru.innopolis.borgatin.homework2.servlets.ProfileViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editProfileView</servlet-name>
+        <url-pattern>/editProfile</url-pattern>
+    </servlet-mapping>
+
+
+
+
 </web-app>

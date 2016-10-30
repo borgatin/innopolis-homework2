@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class User {
 
-    private long id;
+    private int id;
 
     private String login;
 
@@ -17,9 +17,25 @@ public class User {
 
     private Date registrationDay;
 
+    private String lastname;
+
+    private String firstname;
+
+    private String middlename;
+
+    private String city;
+
+    private Date birthday;
+
+    private String gender;
+
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User(){
+
     }
 
     public String getEmail() {
@@ -31,10 +47,13 @@ public class User {
     }
 
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getLogin() {
         return login;
     }
@@ -59,5 +78,51 @@ public class User {
         this.password = password;
     }
 
+    public String getLastname() {
+        return lastname;
+    }
 
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getMiddlename() {
+        return middlename;
+    }
+
+    public void setMiddlename(String middlename) {
+        this.middlename = middlename;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }

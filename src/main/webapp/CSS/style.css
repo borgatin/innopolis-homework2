@@ -12,11 +12,21 @@
     height: 350px;
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
     margin: auto;}
 
 .field {clear:both; text-align:right; line-height:25px;}
 label {float:left; padding-right:10px;}
 .main {float:left}
+
+.maintable {
+    width: 100%;}
+.leftcol {
+    width: 35%;
+}
+.rigthcol{
+    width: 65%;
+}
+
+
+

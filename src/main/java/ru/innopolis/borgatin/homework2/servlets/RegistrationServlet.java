@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.*;
 
 /**
- * Created by avborg on 28.10.2016.
+ * Сервлет предназначен для регистрации пользователя
  */
 public class RegistrationServlet extends HttpServlet {
 
@@ -30,14 +30,14 @@ public class RegistrationServlet extends HttpServlet {
             if (userDAO.create(user)){
                 view = req.getRequestDispatcher("regSuccess.jsp");
             } else {
-                view = req.getRequestDispatcher("regFailed.jsp");
+                req.setAttribute("errorMsg", "Имя пользователя уже занято. Попробуйте еще раз.");
+                view = req.getRequestDispatcher("registration.jsp");
             }
             view.forward(req, resp);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
 
     }
 }
