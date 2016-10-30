@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Класс отвечает за работу со статьями в БД
+ * Класс предназначен для работы со статьями в БД
  */
 public class ArticleDAO extends AbstractDAO<Article, Integer> {
 

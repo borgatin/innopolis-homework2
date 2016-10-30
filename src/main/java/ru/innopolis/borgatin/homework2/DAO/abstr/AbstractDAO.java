@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by avborg on 29.10.2016.
+ * Класс предназначен для получения объектов Connection из пула,
+ * описывает основную логику для работы с БД для конкретных сущностей.
+ * От него необходимо наследоваться, чтобы реализовать работу с БД для сущности.
  */
 
 public abstract class AbstractDAO<E, K> {

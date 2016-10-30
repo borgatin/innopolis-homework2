@@ -1,14 +1,15 @@
 package ru.innopolis.borgatin.homework2.DAO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.innopolis.borgatin.homework2.DAO.abstr.AbstractDAO;
 import ru.innopolis.borgatin.homework2.entity.User;
 
-import javax.naming.NamingException;
 import java.sql.*;
 import java.util.List;
 
 /**
- * Класс отвечает за работу с пользователями в БД
+ * Класс предназначен для работы с пользователями в БД
  */
 public class UserDAO extends AbstractDAO<User, Integer>
 {
@@ -20,6 +21,7 @@ public class UserDAO extends AbstractDAO<User, Integer>
     private final String QUERY_UPDATE_USER_BY_ID =
             "update users set lastname = ?, firstname = ?, middlename = ?, city = ?, birthdate = ?,gender = ? where id = ?";
 
+    private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
 
 
     public UserDAO() throws SQLException {
@@ -43,10 +45,10 @@ public class UserDAO extends AbstractDAO<User, Integer>
                     }
                 }
             } catch (SQLException e) {
-                //TODO: logger
+                logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
             }
         } catch (SQLException e) {
-            //TODO: logger
+            logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
         }
         return null;
     }
@@ -69,11 +71,11 @@ public class UserDAO extends AbstractDAO<User, Integer>
                 if (rowCount > 0) {
                     return entity;
                 }
-            } catch (SQLException E) {
-                //TODO: logger
+            } catch (SQLException e) {
+                logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
             }
         } catch (SQLException e) {
-            //TODO: logger
+            logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
         }
         return null;
     }
@@ -97,12 +99,12 @@ public class UserDAO extends AbstractDAO<User, Integer>
                     if (rowCount > 0) {
                         return true;
                     }
-                } catch (SQLException E) {
-                    //TODO: logger
+                } catch (SQLException e) {
+                    logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
                 }
             }
         } catch (SQLException e) {
-            //TODO: logger
+            logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
         }
         return false;
     }
@@ -114,16 +116,11 @@ public class UserDAO extends AbstractDAO<User, Integer>
             try (ResultSet resultSet = checkStatement.executeQuery()) {
                 if (resultSet.next()) {
                     int loginsCount = resultSet.getInt("logins_count");
-                    if (loginsCount > 0) {
-                        return false;
-                    }
-                    else {
-                        return true;
-                    }
+                    return loginsCount <= 0;
                 }
             }
         } catch (SQLException e) {
-            //TODO: logger
+            logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
         }
         return false;
     }
@@ -134,15 +131,14 @@ public class UserDAO extends AbstractDAO<User, Integer>
                 statement.setString(1, login);
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
-                        User user = getUserByResultSet(resultSet);
-                        return user;
+                        return getUserByResultSet(resultSet);
                     }
                 }
             } catch (SQLException e) {
-                //TODO: logger
+                logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
             }
         } catch (SQLException e) {
-            //TODO: logger
+            logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
         }
         return null;
     }

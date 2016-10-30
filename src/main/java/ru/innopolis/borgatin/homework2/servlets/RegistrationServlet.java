@@ -1,5 +1,7 @@
 package ru.innopolis.borgatin.homework2.servlets;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.innopolis.borgatin.homework2.DAO.UserDAO;
 import ru.innopolis.borgatin.homework2.entity.User;
 
@@ -15,9 +17,14 @@ import java.sql.*;
  */
 public class RegistrationServlet extends HttpServlet {
 
+    private static Logger logger = LoggerFactory.getLogger(RegistrationServlet.class);
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //Считаем информацию с полей ввода
+
+        logger.debug("Начало класса RegistrationServlet");
+
+        //Получим информацию с полей ввода
         String username = (String) req.getParameter("username");
         String email = (String) req.getParameter("email");
         String password = (String) req.getParameter("password");
@@ -28,14 +35,16 @@ public class RegistrationServlet extends HttpServlet {
             UserDAO userDAO = new UserDAO();
             RequestDispatcher view = null;
             if (userDAO.create(user)){
+                logger.debug("Успешная регистрация для логина {}", username);
                 view = req.getRequestDispatcher("regSuccess.jsp");
             } else {
+                logger.debug("Неудачная попытка регистрации для логина {} - логин занят", username);
                 req.setAttribute("errorMsg", "Имя пользователя уже занято. Попробуйте еще раз.");
                 view = req.getRequestDispatcher("registration.jsp");
             }
             view.forward(req, resp);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
         }
 
 

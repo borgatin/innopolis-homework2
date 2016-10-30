@@ -1,5 +1,7 @@
 package ru.innopolis.borgatin.homework2.servlets;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.innopolis.borgatin.homework2.DAO.UserDAO;
 import ru.innopolis.borgatin.homework2.entity.User;
 
@@ -22,8 +24,12 @@ import java.util.Objects;
 public class ProfileViewServlet extends HttpServlet {
     private final String GENDER_MEN = "мужской";
     private final String GENDER_WOMEN = "женский";
+
+    private static Logger logger = LoggerFactory.getLogger(ProfileViewServlet.class);
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        logger.debug("Начало класса ProfileViewServlet");
         HttpSession session = req.getSession();
         Object obj = session.getAttribute("userID");
         if (obj != null) {
@@ -46,7 +52,8 @@ public class ProfileViewServlet extends HttpServlet {
                 RequestDispatcher view = req.getRequestDispatcher("profile.jsp");
                 view.forward(req, resp);
             } catch (SQLException e) {
-                //TODO: logger
+                logger.error("Произошла ошибка при работе с БД: {}", e.getMessage());
+
             }
 
         } else {

@@ -4,6 +4,17 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+
+    <servlet>
+        <servlet-name>welcome</servlet-name>
+        <servlet-class>ru.innopolis.borgatin.homework2.servlets.CheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>welcome</servlet-name>
+        <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         DB Connection
         <res-ref-name>jdbc/app</res-ref-name>
@@ -59,7 +70,7 @@
 
     <servlet>
         <servlet-name>main</servlet-name>
-        <servlet-class>ru.innopolis.borgatin.homework2.servlets.LoginBeforeServlet</servlet-class>
+        <servlet-class>ru.innopolis.borgatin.homework2.servlets.CheckServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
